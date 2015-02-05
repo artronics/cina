@@ -1,13 +1,13 @@
-<<<<<<< HEAD
 /vendor
 /node_modules
 .idea/
 
-.env
 
-
-=======
 /bootstrap/compiled.php
 .env.*.php
 .env.php
->>>>>>> ad2557ed62bc3ba178c4aed09d719cab55331d12
+.env.*
+bower_components
+node_modules
+public/vendor
+.env
