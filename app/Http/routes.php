@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+//Route::get('/', 'WelcomeController@index');
+Route::get('/', function(){
+        return getenv("DB_PASSWORD");
+    }) ;
 
 Route::get('home', 'HomeController@index');
 
