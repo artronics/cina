@@ -13,7 +13,12 @@
 
 //Route::get('/', 'WelcomeController@index');
 Route::get('/', function(){
-        return getenv("DB_PASSWORD");
+        $env[]= getenv("DB_PASSWORD");
+        $env[]= getenv("DB_HOST");
+        $env[]= getenv("DB_USERNAME");
+        $env[]= getenv("DB_DATABASE");
+        $env[]= getenv("APP_ENV");
+        dd($env);
     }) ;
 
 Route::get('home', 'HomeController@index');
