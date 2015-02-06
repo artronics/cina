@@ -54,10 +54,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', ''),
-			'username'  => env('DB_USERNAME', ''),
-			'password'  => env('DB_PASSWORD', ''),
+			'host'      => env('DB_HOST', 'cina.mysql.eu1.frbit.com'),
+			'database'  => env('DB_DATABASE', 'cina'),
+			'username'  => env('DB_USERNAME', 'cina'),
+			'password'  => env('DB_PASSWORD', 'xqj_4t30taKO6E4C'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
