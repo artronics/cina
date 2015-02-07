@@ -1,4 +1,5 @@
-var elixir = require('laravel-elixir');
+var elixir = require('laravel-elixir'),
+    gulp = require('gulp');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +13,34 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    //Compiling sass files
+    mix.sass('screen.scss');
+
+    //Concatenating files
+    mix.styles([
+        'screen.css'
+    ], 'public/css/screen.min.css', 'public/css');
+
+    //Versioning files
+    mix.version('public/css/screen.min.css');
+});
+
+/*
+** Here specify which files must be copied from vendor directory
+ */
+gulp.task('copy', function() {
+
+    //Stylesheets
+     gulp.src('public/vendor/bootstrap/dist/css/bootstrap.min.css')
+        .pipe(gulp.dest('public/css'));
+    gulp.src('public/vendor/font-awesome/css/font-awesome.min.css')
+        .pipe(gulp.dest('public/css'));
+
+    //Scripts
+    gulp.src('public/vendor/angular/angular.min.js')
+        .pipe(gulp.dest('public/js'));
+
+    //Fonts
+    gulp.src('public/vendor/font-awesome/fonts/*')
+        .pipe(gulp.dest('public/fonts'));
 });
