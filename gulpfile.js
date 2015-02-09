@@ -21,8 +21,15 @@ elixir(function(mix) {
         'screen.css'
     ], 'public/css/screen.min.css', 'public/css');
 
+    mix.copy('js/app.js', 'public/js/app.js');
+    ////Concatenating files
+    //mix.scripts([
+    //    'app.js'
+    //], 'public/js/app.min.js', 'public/js');
+
     //Versioning files
     mix.version('public/css/screen.min.css');
+    //mix.version('public/js/app.min.js');
 });
 
 /*

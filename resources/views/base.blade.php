@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="cina">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     @endif
 </head>
-<body>
+<body ng-controller="MainCtrl as ctrl">
 
 
 	@yield('body')
@@ -26,9 +26,10 @@
 	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
 	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>--}}
     @if (getenv('APP_ENV') == 'local')
-        <script src="js/angular.min.js"></script>
+        <script src="/js/angular.min.js"></script>
+        <script src="/js/app.js"></script>
     @elseif(getenv('APP_ENV') == 'production')
-
+        <script src="js/app.min.js"></script>
     @endif
 </body>
 </html>
