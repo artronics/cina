@@ -21,15 +21,16 @@ elixir(function(mix) {
         'screen.css'
     ], 'public/css/screen.min.css', 'public/css');
 
-    mix.copy('js/app.js', 'public/js/app.js');
+    mix.scriptsIn('public/cina', 'public/js/cina.js');
+
+    //mix.copy('js/app.js', 'public/js/app.js');
     ////Concatenating files
-    //mix.scripts([
+    //mix.scriptsIn([
     //    'app.js'
     //], 'public/js/app.min.js', 'public/js');
 
     //Versioning files
     mix.version('public/css/screen.min.css');
-    //mix.version('public/js/app.min.js');
 });
 
 /*
@@ -49,5 +50,7 @@ gulp.task('copy', function() {
 
     //Fonts
     gulp.src('public/vendor/font-awesome/fonts/*')
+        .pipe(gulp.dest('public/fonts'));
+    gulp.src('public/vendor/bootstrap/fonts/*')
         .pipe(gulp.dest('public/fonts'));
 });

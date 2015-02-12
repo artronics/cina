@@ -1,2 +1,5 @@
 .debug-focus {
   background-color: #e8e8e8; }
+
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer; }

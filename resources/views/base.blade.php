@@ -19,15 +19,20 @@
 </head>
 <body ng-controller="MainCtrl as ctrl">
 
-
 	@yield('body')
+	{{--<h1 ng-bind="ctrl.kir">kir</h1>--}}
+	{{--<% ctrl.a %>--}}
 
 	<!-- Scripts -->
 	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
 	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>--}}
     @if (getenv('APP_ENV') == 'local')
         <script src="/js/angular.min.js"></script>
-        <script src="/js/app.js"></script>
+        <script src="/js/ui-bootstrap.min.js"></script>
+        <script src="/js/ui-bootstrap-tpls.min.js"></script>
+        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.min.js"></script>--}}
+        <script src="/js/cina.js"></script>
+        {{--<script src="/js/test.js"></script>--}}
     @elseif(getenv('APP_ENV') == 'production')
         <script src="js/app.min.js"></script>
     @endif
