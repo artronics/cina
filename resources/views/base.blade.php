@@ -20,7 +20,7 @@
 <body ng-controller="MainCtrl as ctrl">
 
 	@yield('body')
-	{{--<h1 ng-bind="ctrl.kir">kir</h1>--}}
+	{{--<h1 ng-bind="ctrl.kir"></h1>--}}
 	{{--<% ctrl.a %>--}}
 
 	<!-- Scripts -->

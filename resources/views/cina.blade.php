@@ -1,7 +1,13 @@
 @extends('layout')
 
-@section('right')
+@section('accordion')
 <div>
-   @include('cina.include.accordion')
+   @include('Accordion.accordion')
+</div>
+@stop
+
+@section('form')
+<div>
+    @include('Form.form')
 </div>
 @stop

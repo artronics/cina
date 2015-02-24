@@ -1,5 +1,5 @@
 //var cina = angular.module('cina', ['ui.bootstrap']);
-angular.module('cina', ['accordion','ui.bootstrap'], function($interpolateProvider) {
+angular.module('cina', ['accordion','ui.bootstrap','ui.bootstrap.showErrors'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 })
@@ -35,7 +35,7 @@ angular.module('accordion',['ui.bootstrap']);
 
 angular.module('accordion')
 
-    .controller('AccordionCtrl', [function() {
+    .controller('AccordionCtrl', ['AccordionItemsService', function(itemsService) {
         var self = this;
 
         self.oneAtATime = true;
@@ -43,14 +43,250 @@ angular.module('accordion')
             isFirstOpen: true,
             isFirstDisabled: false
         };
-        self.groups = [
+        self.menu = itemsService;
+    }]);
+angular.module('accordion')
+    .factory('AccordionItemsService',[function(){
+        var menu =[
             {
-                title: "salaaaam",
-                content: "balaaaaaam"
+                id: 0,
+                title: "Contacts",
+                subtitles: [
+                    {
+                        id: 0,
+                        title: 'Create',
+                        link: 'api/foo',
+                        icon:'bar'
+                    },
+                    {
+                        id: 1,
+                        title: 'Edit',
+                        link: 'api/edit',
+                        icon: 'bar'
+                    },
+                    {
+                        id: 2,
+                        title: 'Delete',
+                        link: 'api/edit',
+                        icon: 'bar'
+                    }]
             },
             {
+                id: 1,
                 title: "dovvomi",
-                content: "balaaaaaam"
+
+                subtitles: [
+                    {
+                        id: 0,
+                        title: 'create',
+                        link: 'api/foo',
+                        icon:'bar'
+                    },
+                    {
+                        id: 1,
+                        title: 'Edit',
+                        link: 'api/edit',
+                        icon: 'bar'
+                    }]
+            },{
+                id: 1,
+                title: "dovvomi",
+
+                subtitles: [
+                    {
+                        id: 0,
+                        title: 'create',
+                        link: 'api/foo',
+                        icon:'bar'
+                    },
+                    {
+                        id: 1,
+                        title: 'Edit',
+                        link: 'api/edit',
+                        icon: 'bar'
+                    }]
             }
         ];
+
+        return menu;
     }]);
+angular.module('cina')
+    .directive('formGroup',[function(){
+        return {
+
+            template:
+            '<div class="form-group">' +
+            '<label for="<% for %>" ng-bind="label"></label>'+
+                //'<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">'+
+            '<div class="controls" ng-transclude></div>'+
+            '</div>',
+
+            replace: true,
+            transclude:true,
+
+            scope: {
+                label: "@" // Gets the string contents of the `label` attribute.
+            },
+
+            link: function(scope, element){
+                // The <label> should have a `for` attribute that links it to the input.
+                // Get the `id` attribute from the input element
+                // and add it to the scope so our template can access it.
+                var id = element.find("input").attr("id");
+                scope.for = id;
+            }
+        };
+    }]);
+angular.module('cina')
+    .directive('formGroupHalf',[function(){
+        return {
+
+            template:
+            '<div class="form-group">' +
+                '<label for="<% for %>" ng-bind="label"></label>'+
+                //'<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">'+
+                '<div class="controls" ng-transclude></div>'+
+            '</div>',
+
+            replace: true,
+            transclude:true,
+            //require: "^form",
+
+            scope: {
+                label: "@" // Gets the string contents of the `label` attribute.
+                //isError: "="
+            },
+
+            link: function(scope, element, attrs, formCtrl){
+                // The <label> should have a `for` attribute that links it to the input.
+                // Get the `id` attribute from the input element
+                // and add it to the scope so our template can access it.
+                var id = element.find("input").attr("id");
+                scope.for = id;
+
+                //// Get the `name` attribute of the input
+                //var inputName = element.find("input").attr("name");
+                //// Build the scope expression that contains the validation status.
+                //// e.g. "form.example.$invalid"
+                //var errorExpression = [formCtrl.$name, inputName, "$invalid"].join(".");
+                //scope.isError=true;
+                //// Watch the parent scope, because current scope is isolated.
+                //scope.$parent.$watch(errorExpression, function(isError) {
+                //    scope.isError = isError;
+                //    scope.isError= true;
+                //});
+            }
+        };
+    }]);
+angular.module('cina')
+    .controller('ContactCtrl',[function(){
+        var self = this;
+        self.contact = {
+            firstName:'jalal',
+            lastName: 'hos',
+            email: 'jkj@kjk.jl'
+        };
+    }]);
+angular.module('cina')
+ .controller('FormCtrl', [function(){
+
+    }]);
+(function() {
+  var showErrorsModule;
+
+  showErrorsModule = angular.module('ui.bootstrap.showErrors', []);
+
+  showErrorsModule.directive('showErrors', [
+    '$timeout', 'showErrorsConfig', '$interpolate', function($timeout, showErrorsConfig, $interpolate) {
+      var getShowSuccess, getTrigger, linkFn;
+      getTrigger = function(options) {
+        var trigger;
+        trigger = showErrorsConfig.trigger;
+        if (options && (options.trigger != null)) {
+          trigger = options.trigger;
+        }
+        return trigger;
+      };
+      getShowSuccess = function(options) {
+        var showSuccess;
+        showSuccess = showErrorsConfig.showSuccess;
+        if (options && (options.showSuccess != null)) {
+          showSuccess = options.showSuccess;
+        }
+        return showSuccess;
+      };
+      linkFn = function(scope, el, attrs, formCtrl) {
+        var blurred, inputEl, inputName, inputNgEl, options, showSuccess, toggleClasses, trigger;
+        blurred = false;
+        options = scope.$eval(attrs.showErrors);
+        showSuccess = getShowSuccess(options);
+        trigger = getTrigger(options);
+        inputEl = el[0].querySelector('.form-control[name]');
+        inputNgEl = angular.element(inputEl);
+        inputName = $interpolate(inputNgEl.attr('name') || '')(scope);
+        if (!inputName) {
+          throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
+        }
+        inputNgEl.bind(trigger, function() {
+          blurred = true;
+          return toggleClasses(formCtrl[inputName].$invalid);
+        });
+        scope.$watch(function() {
+          return formCtrl[inputName] && formCtrl[inputName].$invalid;
+        }, function(invalid) {
+          if (!blurred) {
+            return;
+          }
+          return toggleClasses(invalid);
+        });
+        scope.$on('show-errors-check-validity', function() {
+          return toggleClasses(formCtrl[inputName].$invalid);
+        });
+        scope.$on('show-errors-reset', function() {
+          return $timeout(function() {
+            el.removeClass('has-error');
+            el.removeClass('has-success');
+            return blurred = false;
+          }, 0, false);
+        });
+        return toggleClasses = function(invalid) {
+          el.toggleClass('has-error', invalid);
+          if (showSuccess) {
+            return el.toggleClass('has-success', !invalid);
+          }
+        };
+      };
+      return {
+        restrict: 'A',
+        require: '^form',
+        compile: function(elem, attrs) {
+          if (attrs['showErrors'].indexOf('skipFormGroupCheck') === -1) {
+            if (!(elem.hasClass('form-group') || elem.hasClass('input-group'))) {
+              throw "show-errors element does not have the 'form-group' or 'input-group' class";
+            }
+          }
+          return linkFn;
+        }
+      };
+    }
+  ]);
+
+  showErrorsModule.provider('showErrorsConfig', function() {
+    var _showSuccess, _trigger;
+    _showSuccess = false;
+    _trigger = 'blur';
+    this.showSuccess = function(showSuccess) {
+      return _showSuccess = showSuccess;
+    };
+    this.trigger = function(trigger) {
+      return _trigger = trigger;
+    };
+    this.$get = function() {
+      return {
+        showSuccess: _showSuccess,
+        trigger: _trigger
+      };
+    };
+  });
+
+}).call(this);

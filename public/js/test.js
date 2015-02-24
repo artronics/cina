@@ -1,4 +1,4 @@
-var cina = angular.module('cina', ['ui.bootstrap'], function($interpolateProvider) {
+var cina = angular.module('cina', function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 })
@@ -7,23 +7,23 @@ var cina = angular.module('cina', ['ui.bootstrap'], function($interpolateProvide
         var self = this;
         self.kir = "khar";
         self.a="daste"
-    }])
-    .controller('AccordionCtrl', [function() {
-        var self = this;
-
-        self.oneAtATime = true;
-        self.status = {
-            isFirstOpen: true,
-            isFirstDisabled: false
-        };
-        self.groups = [
-            {
-                title: "salaaaam",
-                content: "balaaaaaam"
-            },
-            {
-                title: "dovvomi",
-                content: "balaaaaaam"
-            }
-        ];
     }]);
+    //.controller('AccordionCtrl', [function() {
+    //    var self = this;
+    //
+    //    self.oneAtATime = true;
+    //    self.status = {
+    //        isFirstOpen: true,
+    //        isFirstDisabled: false
+    //    };
+    //    self.groups = [
+    //        {
+    //            title: "salaaaam",
+    //            content: "balaaaaaam"
+    //        },
+    //        {
+    //            title: "dovvomi",
+    //            content: "balaaaaaam"
+    //        }
+    //    ];
+    //}]);

@@ -21,7 +21,7 @@ elixir(function(mix) {
         'screen.css'
     ], 'public/css/screen.min.css', 'public/css');
 
-    mix.scriptsIn('public/cina', 'public/js/cina.js');
+    mix.scriptsIn('public/cina/Component', 'public/js/cina.js');
 
     //mix.copy('js/app.js', 'public/js/app.js');
     ////Concatenating files
@@ -48,6 +48,8 @@ gulp.task('copy', function() {
     gulp.src('public/vendor/angular/angular.min.js')
         .pipe(gulp.dest('public/js'));
 
+    gulp.src('public/vendor/angular-bootstrap-show-errors/src/showErrors.js')
+        .pipe(gulp.dest('public/cina/Component/vendor'));
     //Fonts
     gulp.src('public/vendor/font-awesome/fonts/*')
         .pipe(gulp.dest('public/fonts'));

@@ -15,7 +15,16 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'resources/js/tests'
+        'public/js/angular.min.js',
+        'public/js/angular-mocks.js',
+
+        'public/js/ui-bootstrap.min.js',
+        'public/js/ui-bootstrap-tpls.min.js',
+
+        'public/cina/app.js',
+
+        'public/cina/specs/**',
+        'public/cina/Component/**'
     ],
 
 
@@ -26,19 +35,19 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
+    //preprocessors: {
+    //},
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    //reporters: ['progress'],
 
 
     // web server port
-    port: 9876,
-
+    //port: 9876,
+    port:8080,
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
@@ -50,7 +59,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers

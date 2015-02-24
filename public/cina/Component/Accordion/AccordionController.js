@@ -1,6 +1,6 @@
 angular.module('accordion')
 
-    .controller('AccordionCtrl', [function() {
+    .controller('AccordionCtrl', ['AccordionItemsService', function(itemsService) {
         var self = this;
 
         self.oneAtATime = true;
@@ -8,14 +8,5 @@ angular.module('accordion')
             isFirstOpen: true,
             isFirstDisabled: false
         };
-        self.groups = [
-            {
-                title: "salaaaam",
-                content: "balaaaaaam"
-            },
-            {
-                title: "dovvomi",
-                content: "balaaaaaam"
-            }
-        ];
+        self.menu = itemsService;
     }]);
