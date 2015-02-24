@@ -9,7 +9,7 @@ class PagesController extends Controller {
 
     function __construct()
     {
-        $this->middleware('guest',['only' => ['welcome','cina']]);
+        $this->middleware('guest',['only' => ['welcome']]);
         $this->middleware('auth', ['only' => 'cina']);
     }
 

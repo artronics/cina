@@ -12,8 +12,13 @@
 */
 
 //Route::get('/', 'WelcomeController@index');
-Route::get('/',    'PagesController@welcome');
-Route::get('app', 'PagesController@cina');
+Route::get('/',    ['as' => 'welcome','uses' => 'PagesController@welcome']);
+Route::get('app', ['as' => 'cina','uses' => 'PagesController@cina']);
+
+Route::group(['prefix' => 'cina', 'middleware' => 'auth'], function()
+    {
+        Route::resource('contacts', 'ContactController');
+    });
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
@@ -21,4 +26,3 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('/contacts', 'ContactController');
