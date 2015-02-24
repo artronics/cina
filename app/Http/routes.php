@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
+//Route::get('/', 'WelcomeController@index');
+Route::get('/',    'PagesController@welcome');
+Route::get('app', 'PagesController@cina');
 Route::get('home', 'HomeController@index');
 
 Route::controllers([

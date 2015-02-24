@@ -7,15 +7,27 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller {
 
-	/**
+    function __construct()
+    {
+        $this->middleware('guest',['only' => ['welcome','cina']]);
+        $this->middleware('auth', ['only' => 'cina']);
+    }
+
+
+    /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function welcome()
 	{
-		return "kire khar";
+		return view('welcome');
 	}
+
+    public function cina()
+    {
+        return view('cina');
+    }
 
 	/**
 	 * Show the form for creating a new resource.
