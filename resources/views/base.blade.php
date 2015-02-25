@@ -28,6 +28,7 @@
 	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>--}}
     @if (getenv('APP_ENV') == 'local')
         <script src="/js/angular.min.js"></script>
+        <script src="/js/angular-ui-router.min.js"></script>
         <script src="/js/ui-bootstrap.min.js"></script>
         <script src="/js/ui-bootstrap-tpls.min.js"></script>
         {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.min.js"></script>--}}
