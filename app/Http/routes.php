@@ -14,6 +14,7 @@
 //Route::get('/', 'WelcomeController@index');
 Route::get('/',    ['as' => 'welcome','uses' => 'PagesController@welcome']);
 Route::get('app', ['as' => 'cina','uses' => 'PagesController@cina']);
+Route::get('test', ['as' => 'test', 'uses' => 'PagesController@test']);
 
 Route::group(['prefix' => 'cina', 'middleware' => 'auth'], function()
     {

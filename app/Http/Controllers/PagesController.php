@@ -29,6 +29,10 @@ class PagesController extends Controller {
         return view('cina');
     }
 
+    public function test()
+    {
+        return view('test');
+    }
 	/**
 	 * Show the form for creating a new resource.
 	 *
