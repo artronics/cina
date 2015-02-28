@@ -6,4 +6,7 @@ angular.module('cina')
             lastName: 'hos',
             email: 'jkj@kjk.jl'
         };
+        self.create = function(){
+
+        };
     }]);

@@ -4,27 +4,21 @@ angular.module('cina')
     //
     // Now set up the states
     $stateProvider
-        .state('state1', {
-            url: "/state1",
-            template: 'h1lkjlj'
+        .state("contact", {
+            url: "/contact",
+            templateUrl: "/cina/Component/Template/Contact/contact.index.html"
         })
-        .state('state1.list', {
-            url: "/list",
-            template: "partials/state1.list.html",
-            controller: function($scope) {
-                $scope.items = ["A", "List", "Of", "Items"];
-            }
+        .state("contact.edit", {
+            url: "/edit",
+            templateUrl: "/cina/Component/Template/Contact/contact.edit.html"
         })
-        .state('state2', {
-            url: "/state2",
-            template: "partials/state2.html"
+        .state("contact.create", {
+            url: "/create",
+            templateUrl: "/cina/Component/Template/Contact/contact.create.html"
         })
-        .state('state2.list', {
-            url: "/list",
-            template: "partials/state2.list.html",
-            controller: function($scope) {
-                $scope.things = ["A", "Set", "Of", "Things"];
-            }
+        .state("contact.delete", {
+            url: "/delete",
+            templateUrl: "/cina/Component/Template/Contact/contact.delete.html"
         });
 
 });

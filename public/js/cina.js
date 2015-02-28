@@ -1,5 +1,11 @@
 //var cina = angular.module('cina', ['ui.bootstrap']);
-angular.module('cina', ['accordion','ui.bootstrap','ui.bootstrap.showErrors', 'ui.router'], function($interpolateProvider) {
+angular.module('cina',
+    [   'accordion',
+        'ngResource',
+        'ui.bootstrap',
+        'ui.bootstrap.showErrors',
+        'ui.router']
+    , function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 })
@@ -51,57 +57,27 @@ angular.module('accordion')
             {
                 id: 0,
                 title: "Contacts",
+                state: 'contact',
+                link: '/contact',
                 subtitles: [
                     {
                         id: 0,
                         title: 'Create',
-                        link: 'api/foo',
+                        state: 'contact.create',
+                        link: '/contact/create',
                         icon:'bar'
                     },
                     {
                         id: 1,
                         title: 'Edit',
-                        link: 'api/edit',
+                        state: 'contact.edit',
+                        link: '/kir',
                         icon: 'bar'
                     },
                     {
                         id: 2,
                         title: 'Delete',
-                        link: 'api/edit',
-                        icon: 'bar'
-                    }]
-            },
-            {
-                id: 1,
-                title: "dovvomi",
-
-                subtitles: [
-                    {
-                        id: 0,
-                        title: 'create',
-                        link: 'api/foo',
-                        icon:'bar'
-                    },
-                    {
-                        id: 1,
-                        title: 'Edit',
-                        link: 'api/edit',
-                        icon: 'bar'
-                    }]
-            },{
-                id: 1,
-                title: "dovvomi",
-
-                subtitles: [
-                    {
-                        id: 0,
-                        title: 'create',
-                        link: 'api/foo',
-                        icon:'bar'
-                    },
-                    {
-                        id: 1,
-                        title: 'Edit',
+                        state: 'contact.delete',
                         link: 'api/edit',
                         icon: 'bar'
                     }]
@@ -109,6 +85,18 @@ angular.module('accordion')
         ];
 
         return menu;
+    }]);
+angular.module('cina')
+    .controller('ContactCtrl',[function(){
+        var self = this;
+        self.contact = {
+            firstName:'jalal',
+            lastName: 'hos',
+            email: 'jkj@kjk.jl'
+        };
+        self.create = function(){
+
+        };
     }]);
 angular.module('cina')
     .directive('formGroup',[function(){
@@ -179,15 +167,6 @@ angular.module('cina')
         };
     }]);
 angular.module('cina')
-    .controller('ContactCtrl',[function(){
-        var self = this;
-        self.contact = {
-            firstName:'jalal',
-            lastName: 'hos',
-            email: 'jkj@kjk.jl'
-        };
-    }]);
-angular.module('cina')
  .controller('FormCtrl', [function(){
 
     }]);
@@ -197,27 +176,21 @@ angular.module('cina')
     //
     // Now set up the states
     $stateProvider
-        .state('state1', {
-            url: "/state1",
-            template: 'h1lkjlj'
+        .state("contact", {
+            url: "/contact",
+            templateUrl: "/cina/Component/Template/Contact/contact.index.html"
         })
-        .state('state1.list', {
-            url: "/list",
-            template: "partials/state1.list.html",
-            controller: function($scope) {
-                $scope.items = ["A", "List", "Of", "Items"];
-            }
+        .state("contact.edit", {
+            url: "/edit",
+            templateUrl: "/cina/Component/Template/Contact/contact.edit.html"
         })
-        .state('state2', {
-            url: "/state2",
-            template: "partials/state2.html"
+        .state("contact.create", {
+            url: "/create",
+            templateUrl: "/cina/Component/Template/Contact/contact.create.html"
         })
-        .state('state2.list', {
-            url: "/list",
-            template: "partials/state2.list.html",
-            controller: function($scope) {
-                $scope.things = ["A", "Set", "Of", "Things"];
-            }
+        .state("contact.delete", {
+            url: "/delete",
+            templateUrl: "/cina/Component/Template/Contact/contact.delete.html"
         });
 
 });

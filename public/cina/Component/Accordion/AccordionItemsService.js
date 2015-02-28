@@ -4,57 +4,27 @@ angular.module('accordion')
             {
                 id: 0,
                 title: "Contacts",
+                state: 'contact',
+                link: '/contact',
                 subtitles: [
                     {
                         id: 0,
                         title: 'Create',
-                        link: 'api/foo',
+                        state: 'contact.create',
+                        link: '/contact/create',
                         icon:'bar'
                     },
                     {
                         id: 1,
                         title: 'Edit',
-                        link: 'api/edit',
+                        state: 'contact.edit',
+                        link: '/kir',
                         icon: 'bar'
                     },
                     {
                         id: 2,
                         title: 'Delete',
-                        link: 'api/edit',
-                        icon: 'bar'
-                    }]
-            },
-            {
-                id: 1,
-                title: "dovvomi",
-
-                subtitles: [
-                    {
-                        id: 0,
-                        title: 'create',
-                        link: 'api/foo',
-                        icon:'bar'
-                    },
-                    {
-                        id: 1,
-                        title: 'Edit',
-                        link: 'api/edit',
-                        icon: 'bar'
-                    }]
-            },{
-                id: 1,
-                title: "dovvomi",
-
-                subtitles: [
-                    {
-                        id: 0,
-                        title: 'create',
-                        link: 'api/foo',
-                        icon:'bar'
-                    },
-                    {
-                        id: 1,
-                        title: 'Edit',
+                        state: 'contact.delete',
                         link: 'api/edit',
                         icon: 'bar'
                     }]

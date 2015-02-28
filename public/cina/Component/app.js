@@ -1,5 +1,11 @@
 //var cina = angular.module('cina', ['ui.bootstrap']);
-angular.module('cina', ['accordion','ui.bootstrap','ui.bootstrap.showErrors', 'ui.router'], function($interpolateProvider) {
+angular.module('cina',
+    [   'accordion',
+        'ngResource',
+        'ui.bootstrap',
+        'ui.bootstrap.showErrors',
+        'ui.router']
+    , function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 })
