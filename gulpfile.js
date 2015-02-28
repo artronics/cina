@@ -51,6 +51,11 @@ gulp.task('copy', function() {
     gulp.src('public/vendor/angular-bootstrap-show-errors/src/showErrors.js')
         .pipe(gulp.dest('public/cina/Component/vendor'));
 
+    gulp.src('public/vendor/angular-resource/angular-resource.min.js')
+        .pipe(gulp.dest('public/js'));
+    gulp.src('public/vendor/angular-resource/angular-resource.min.js.map')
+        .pipe(gulp.dest('public/js'));
+
     gulp.src('public/vendor/angular-ui-router/release/angular-ui-router.min.js')
         .pipe(gulp.dest('public/js'))
     //Fonts

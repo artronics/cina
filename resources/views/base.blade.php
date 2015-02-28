@@ -28,6 +28,7 @@
 	{{--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>--}}
     @if (getenv('APP_ENV') == 'local')
         <script src="/js/angular.min.js"></script>
+        <script src="/js/angular-resource.min.js"></script>
         <script src="/js/angular-ui-router.min.js"></script>
         <script src="/js/ui-bootstrap.min.js"></script>
         <script src="/js/ui-bootstrap-tpls.min.js"></script>
@@ -36,6 +37,7 @@
         {{--<script src="/js/test.js"></script>--}}
     @elseif(getenv('APP_ENV') == 'production')
         <script src="js/app.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular-resource.js"></script>
     @endif
 </body>
 </html>

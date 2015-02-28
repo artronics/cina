@@ -14,8 +14,12 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0'); // disable foreign key constraints
+
 		$this->call('UserTableSeeder');
         $this->call('ContactTableSeeder');
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 	}
 
 }

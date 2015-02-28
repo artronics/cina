@@ -24,7 +24,15 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+        $router->model('contacts', 'App\Model\Contact\Contact');
+        $router->model('user', 'App\Model\User\User');
+
+        //$router->bind('user', function('id')
+        //{
+         //   if (Auth::user==)
+        //});
+        //
+		////
 	}
 
 	/**

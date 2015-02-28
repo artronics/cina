@@ -18,7 +18,7 @@ Route::get('test', ['as' => 'test', 'uses' => 'PagesController@test']);
 
 Route::group(['prefix' => 'cina', 'middleware' => 'auth'], function()
     {
-        Route::resource('contacts', 'ContactController');
+        Route::resource('user.contacts', 'ContactController');
     });
 Route::get('home', 'HomeController@index');
 

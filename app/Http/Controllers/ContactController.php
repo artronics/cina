@@ -3,18 +3,31 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Contact\Contact;
+use App\Model\User\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class ContactController
+ * @package App\Http\Controllers
+ */
 class ContactController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param User $user
+     * @return Response
+     */
+	public function index(User $user)
 	{
-		//
+        return $user->contacts()->get()->toArray();
 	}
 
 	/**
@@ -43,9 +56,9 @@ class ContactController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Contact $contact)
 	{
-		//
+        return $contact->toArray();
 	}
 
 	/**

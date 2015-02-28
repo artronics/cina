@@ -31,4 +31,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public function contacts()
+    {
+        return $this->hasMany('App\Model\Contact\Contact');
+    }
+
 }
